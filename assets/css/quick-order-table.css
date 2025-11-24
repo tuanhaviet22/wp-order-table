@@ -81,10 +81,12 @@
     color: #333;
     white-space: nowrap;
     margin: 0;
+    line-height: 42px;
 }
 
 .qot-search-controls {
     display: flex;
+    align-items: center;
     gap: 8px;
     flex: 1;
     max-width: 500px;
@@ -139,11 +141,12 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 42px;
+    height: 42px;
     background: #007cba;
     border-radius: 50%;
     color: #fff;
+    flex-shrink: 0;
 }
 
 .qot-phone-icon svg {
@@ -157,6 +160,7 @@
     color: #007cba;
     text-decoration: none;
     transition: color 0.2s ease;
+    line-height: 42px;
 }
 
 .qot-phone-number:hover {
