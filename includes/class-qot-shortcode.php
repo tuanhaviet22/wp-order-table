@@ -253,16 +253,16 @@ class QOT_Shortcode {
                     <tbody>
                         <?php foreach ($variations as $variation) : ?>
                             <tr class="qot-variation-row" data-variation-id="<?php echo esc_attr($variation['variation_id']); ?>">
-                                <td class="qot-col-sku">
+                                <td class="qot-col-sku" data-label="<?php esc_attr_e('Mã SP', 'quick-order-table'); ?>">
                                     <span class="qot-sku"><?php echo esc_html($variation['sku']); ?></span>
                                 </td>
-                                <td class="qot-col-spec">
+                                <td class="qot-col-spec" data-label="<?php esc_attr_e('Thông tin', 'quick-order-table'); ?>">
                                     <div class="qot-variation-name"><?php echo esc_html($variation['name']); ?></div>
                                     <?php if (!empty($variation['description'])) : ?>
                                         <div class="qot-variation-desc"><?php echo esc_html($variation['description']); ?></div>
                                     <?php endif; ?>
                                 </td>
-                                <td class="qot-col-qty">
+                                <td class="qot-col-qty" data-label="<?php esc_attr_e('Số lượng', 'quick-order-table'); ?>">
                                     <input type="number"
                                            class="qot-qty-input"
                                            value="0"

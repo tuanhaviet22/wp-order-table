@@ -436,34 +436,68 @@
     .quick-order-table tbody tr {
         margin-bottom: 15px;
         border: 1px solid #dee2e6;
-        border-radius: 4px;
-        padding: 10px;
+        border-radius: 8px;
+        padding: 15px;
+        background: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
 
     .quick-order-table td {
-        padding: 8px 0;
+        padding: 10px 0;
         border: none;
-        position: relative;
-        padding-left: 50%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
         text-align: left;
     }
 
     .quick-order-table td:before {
         content: attr(data-label);
-        position: absolute;
-        left: 10px;
-        width: 45%;
-        padding-right: 10px;
         font-weight: 600;
-        text-align: left;
+        color: #666;
+        font-size: 13px;
+        min-width: 80px;
+        flex-shrink: 0;
+    }
+
+    .quick-order-table td:not(:last-child) {
+        border-bottom: 1px solid #f0f0f0;
+        padding-bottom: 10px;
+        margin-bottom: 5px;
+    }
+
+    .qot-col-sku .qot-sku {
+        font-weight: 600;
+        color: #007cba;
+    }
+
+    .qot-col-spec {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .qot-col-spec:before {
+        margin-bottom: 5px;
+    }
+
+    .qot-variation-name {
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+
+    .qot-variation-desc {
+        color: #666;
+        font-size: 12px;
     }
 
     .qot-col-qty {
-        text-align: left;
+        align-items: center;
     }
 
     .qot-qty-input {
-        width: 60px;
-        float: right;
+        width: 80px;
+        height: 40px;
+        font-size: 14px;
+        text-align: center;
     }
 }
