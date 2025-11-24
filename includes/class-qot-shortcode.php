@@ -216,6 +216,31 @@ class QOT_Shortcode {
         <div class="quick-order-table-wrapper" data-product-id="<?php echo esc_attr($product->get_id()); ?>">
             <div class="qot-messages"></div>
 
+            <div class="qot-header">
+                <div class="qot-search-wrapper">
+                    <label for="qot-search-input" class="qot-search-label">
+                        <?php esc_html_e('Tìm kiếm', 'quick-order-table'); ?>
+                    </label>
+                    <div class="qot-search-controls">
+                        <input type="text"
+                               id="qot-search-input"
+                               class="qot-search-input"
+                               placeholder="<?php esc_attr_e('Nhập mã sản phẩm hoặc tên...', 'quick-order-table'); ?>">
+                        <button type="button" class="qot-search-btn">
+                            <?php esc_html_e('Tìm kiếm', 'quick-order-table'); ?>
+                        </button>
+                    </div>
+                </div>
+                <div class="qot-contact">
+                    <span class="qot-phone-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </span>
+                    <a href="tel:0915833321" class="qot-phone-number">0915.833.321</a>
+                </div>
+            </div>
+
             <div class="qot-table-container">
                 <table class="quick-order-table">
                     <thead>

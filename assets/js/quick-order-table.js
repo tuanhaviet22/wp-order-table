@@ -23,6 +23,31 @@
         bindEvents: function() {
             var self = this;
 
+            // Search functionality
+            $(document).on('click', '.qot-search-btn', function(e) {
+                e.preventDefault();
+                var $wrapper = $(this).closest('.quick-order-table-wrapper');
+                var searchTerm = $wrapper.find('.qot-search-input').val();
+                self.filterTable(searchTerm, $wrapper);
+            });
+
+            // Search on Enter key
+            $(document).on('keypress', '.qot-search-input', function(e) {
+                if (e.which === 13) { // Enter key
+                    e.preventDefault();
+                    var $wrapper = $(this).closest('.quick-order-table-wrapper');
+                    var searchTerm = $(this).val();
+                    self.filterTable(searchTerm, $wrapper);
+                }
+            });
+
+            // Real-time search (optional)
+            $(document).on('keyup', '.qot-search-input', function() {
+                var $wrapper = $(this).closest('.quick-order-table-wrapper');
+                var searchTerm = $(this).val();
+                self.filterTable(searchTerm, $wrapper);
+            });
+
             // Validate quantity input
             $(document).on('change', '.qot-qty-input', function() {
                 var $input = $(this);
@@ -41,6 +66,40 @@
             $(document).on('click', '.qot-add-to-cart-btn', function(e) {
                 e.preventDefault();
                 self.addToCart($(this));
+            });
+        },
+
+        /**
+         * Filter table rows based on search term
+         */
+        filterTable: function(searchTerm, $wrapper) {
+            var $table = $wrapper.find('.quick-order-table');
+            var $rows = $table.find('tbody .qot-variation-row');
+
+            // Convert search term to lowercase for case-insensitive search
+            searchTerm = searchTerm.toLowerCase().trim();
+
+            if (searchTerm === '') {
+                // Show all rows if search is empty
+                $rows.show();
+                return;
+            }
+
+            // Filter rows
+            $rows.each(function() {
+                var $row = $(this);
+                var sku = $row.find('.qot-sku').text().toLowerCase();
+                var name = $row.find('.qot-variation-name').text().toLowerCase();
+                var desc = $row.find('.qot-variation-desc').text().toLowerCase();
+
+                // Check if search term matches SKU, name, or description
+                if (sku.indexOf(searchTerm) !== -1 ||
+                    name.indexOf(searchTerm) !== -1 ||
+                    desc.indexOf(searchTerm) !== -1) {
+                    $row.show();
+                } else {
+                    $row.hide();
+                }
             });
         },
 
@@ -96,14 +155,14 @@
                         // Reset all quantity inputs to 0
                         $table.find('.qot-qty-input').val(0);
 
-                        // Trigger WooCommerce cart update event
-                        $(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash, $btn]);
-
                         // Update mini cart if fragments are available
-                        if (response.fragments) {
-                            $.each(response.fragments, function(key, value) {
+                        if (response.data.fragments) {
+                            $.each(response.data.fragments, function(key, value) {
                                 $(key).replaceWith(value);
                             });
+
+                            // Trigger WooCommerce cart update event
+                            $(document.body).trigger('added_to_cart', [response.data.fragments, response.data.cart_hash, $btn]);
                         }
 
                         // Scroll to message

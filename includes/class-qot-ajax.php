@@ -183,7 +183,7 @@ class QOT_Ajax {
             }
 
             // Get cart fragments for mini cart update
-            WC_AJAX::get_refreshed_fragments();
+            $fragments = $this->get_cart_fragments();
 
             // Send success response
             wp_send_json_success(array(
@@ -191,6 +191,8 @@ class QOT_Ajax {
                 'added_count' => $added_count,
                 'failed_count' => count($failed_items),
                 'failed_items' => $failed_items,
+                'fragments' => $fragments,
+                'cart_hash' => WC()->cart->get_cart_hash(),
             ));
 
         } catch (Exception $e) {
@@ -198,5 +200,29 @@ class QOT_Ajax {
                 'message' => $e->getMessage(),
             ));
         }
+    }
+
+    /**
+     * Get cart fragments for mini cart update
+     *
+     * @return array Cart fragments
+     */
+    private function get_cart_fragments() {
+        // Get mini cart fragments
+        ob_start();
+
+        woocommerce_mini_cart();
+
+        $mini_cart = ob_get_clean();
+
+        // Build fragments array
+        $fragments = array(
+            'div.widget_shopping_cart_content' => '<div class="widget_shopping_cart_content">' . $mini_cart . '</div>',
+        );
+
+        // Allow other plugins to add their fragments
+        $fragments = apply_filters('woocommerce_add_to_cart_fragments', $fragments);
+
+        return $fragments;
     }
 }
