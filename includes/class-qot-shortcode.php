@@ -278,7 +278,7 @@ class QOT_Shortcode {
                                     <span class="qot-sku"><?php echo esc_html($variation['model']); ?></span>
                                 </td>
                                 <td class="qot-col-spec" data-label="<?php esc_attr_e('Thông tin', 'quick-order-table'); ?>">
-                                    <div class="qot-variation-name"><?php echo esc_html($variation['name']); ?></div>
+                                    <div class="qot-variation-name"><?php echo esc_html($product->get_name() . ' ' . $variation['name']); ?></div>
                                     <?php if (!empty($variation['description'])) : ?>
                                         <div class="qot-variation-desc"><?php echo esc_html($variation['description']); ?></div>
                                     <?php endif; ?>
