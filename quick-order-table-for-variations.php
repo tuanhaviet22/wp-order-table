@@ -106,6 +106,37 @@ class Quick_Order_Table_For_Variations {
         if (class_exists('QOT_UX_Builder')) {
             QOT_UX_Builder::get_instance();
         }
+
+        // Hide all WooCommerce prices
+        $this->hide_prices();
+    }
+
+    /**
+     * Hide all WooCommerce prices and replace with "Liên hệ"
+     */
+    private function hide_prices() {
+        // Remove price from shop loop
+        add_filter('woocommerce_get_price_html', array($this, 'replace_price_with_contact'), 10, 2);
+
+        // Remove price from variable products
+        add_filter('woocommerce_variable_price_html', array($this, 'replace_price_with_contact'), 10, 2);
+
+        // Remove price from grouped products
+        add_filter('woocommerce_grouped_price_html', array($this, 'replace_price_with_contact'), 10, 2);
+
+        // Remove price from simple products
+        add_filter('woocommerce_empty_price_html', array($this, 'replace_price_with_contact'), 10, 2);
+    }
+
+    /**
+     * Replace price with "Liên hệ" text
+     *
+     * @param string $price Price HTML
+     * @param object $product Product object
+     * @return string
+     */
+    public function replace_price_with_contact($price, $product) {
+        return '<span class="qot-contact-price">Liên hệ</span>';
     }
 
     /**

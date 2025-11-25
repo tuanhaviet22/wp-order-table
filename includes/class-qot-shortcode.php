@@ -68,14 +68,15 @@ class QOT_Shortcode {
 
         // Check if product is variable
         if (!$product->is_type('variable')) {
-            return '<div class="qot-message qot-info">' . esc_html__('Sản phẩm này không có biến thể.', 'quick-order-table') . '</div>';
+            return ''; // Return empty string to hide table for non-variable products
         }
 
         // Get available variations
         $variations = $this->get_available_variations($product);
 
+        // If no variations available, don't show the table
         if (empty($variations)) {
-            return '<div class="qot-message qot-info">' . esc_html__('Không có biến thể nào khả dụng cho sản phẩm này.', 'quick-order-table') . '</div>';
+            return ''; // Return empty string to hide table when no variations available
         }
 
         // Render the table
@@ -153,7 +154,7 @@ class QOT_Shortcode {
                 'name' => $this->get_variation_name($variation),
                 'description' => $this->get_variation_description($variation),
                 'attributes' => $attributes,
-                'price' => $variation->get_price_html(),
+                'price' => 'Liên hệ',
                 'stock_quantity' => $variation->get_stock_quantity(),
             );
         }
