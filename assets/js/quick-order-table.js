@@ -88,12 +88,12 @@
             // Filter rows
             $rows.each(function() {
                 var $row = $(this);
-                var sku = $row.find('.qot-sku').text().toLowerCase();
+                var model = $row.find('.qot-sku').text().toLowerCase();
                 var name = $row.find('.qot-variation-name').text().toLowerCase();
                 var desc = $row.find('.qot-variation-desc').text().toLowerCase();
 
-                // Check if search term matches SKU, name, or description
-                if (sku.indexOf(searchTerm) !== -1 ||
+                // Check if search term matches model, name, or description
+                if (model.indexOf(searchTerm) !== -1 ||
                     name.indexOf(searchTerm) !== -1 ||
                     desc.indexOf(searchTerm) !== -1) {
                     $row.show();

@@ -126,12 +126,33 @@ class QOT_Shortcode {
                 continue;
             }
 
+            // Get model attribute
+            $attributes = $variation->get_attributes();
+            $model = '';
+
+            // Check for 'model' attribute (could be 'attribute_model' or 'attribute_pa_model')
+            if (isset($attributes['model'])) {
+                $model = $attributes['model'];
+            } elseif (isset($attributes['attribute_model'])) {
+                $model = $attributes['attribute_model'];
+            } elseif (isset($attributes['pa_model'])) {
+                $model = $attributes['pa_model'];
+            } elseif (isset($attributes['attribute_pa_model'])) {
+                $model = $attributes['attribute_pa_model'];
+            }
+
+            // Fallback to SKU if no model found
+            if (empty($model)) {
+                $model = $variation->get_sku() ? $variation->get_sku() : '-';
+            }
+
             $available_variations[] = array(
                 'variation_id' => $variation_id,
                 'sku' => $variation->get_sku() ? $variation->get_sku() : '-',
+                'model' => $model,
                 'name' => $this->get_variation_name($variation),
                 'description' => $this->get_variation_description($variation),
-                'attributes' => $variation->get_attributes(),
+                'attributes' => $attributes,
                 'price' => $variation->get_price_html(),
                 'stock_quantity' => $variation->get_stock_quantity(),
             );
@@ -254,7 +275,7 @@ class QOT_Shortcode {
                         <?php foreach ($variations as $variation) : ?>
                             <tr class="qot-variation-row" data-variation-id="<?php echo esc_attr($variation['variation_id']); ?>">
                                 <td class="qot-col-sku" data-label="<?php esc_attr_e('Mã SP', 'quick-order-table'); ?>">
-                                    <span class="qot-sku"><?php echo esc_html($variation['sku']); ?></span>
+                                    <span class="qot-sku"><?php echo esc_html($variation['model']); ?></span>
                                 </td>
                                 <td class="qot-col-spec" data-label="<?php esc_attr_e('Thông tin', 'quick-order-table'); ?>">
                                     <div class="qot-variation-name"><?php echo esc_html($variation['name']); ?></div>
