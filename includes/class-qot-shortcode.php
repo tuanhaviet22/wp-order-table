@@ -260,6 +260,14 @@ class QOT_Shortcode {
                         </svg>
                     </span>
                     <a href="tel:0915833321" class="qot-phone-number">0915.833.321</a>
+                    <button type="button" class="qot-header-add-to-cart-btn button alt">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <?php esc_html_e('Thêm vào giỏ hàng', 'quick-order-table'); ?>
+                    </button>
                 </div>
             </div>
 

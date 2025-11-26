@@ -62,8 +62,14 @@
                 }
             });
 
-            // Add to cart button
+            // Add to cart button (bottom)
             $(document).on('click', '.qot-add-to-cart-btn', function(e) {
+                e.preventDefault();
+                self.addToCart($(this));
+            });
+
+            // Add to cart button (header)
+            $(document).on('click', '.qot-header-add-to-cart-btn', function(e) {
                 e.preventDefault();
                 self.addToCart($(this));
             });
