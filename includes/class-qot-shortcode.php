@@ -240,9 +240,6 @@ class QOT_Shortcode {
 
             <div class="qot-header">
                 <div class="qot-search-wrapper">
-                    <label for="qot-search-input" class="qot-search-label">
-                        <?php esc_html_e('Tìm kiếm', 'quick-order-table'); ?>
-                    </label>
                     <div class="qot-search-controls">
                         <input type="text"
                                id="qot-search-input"
