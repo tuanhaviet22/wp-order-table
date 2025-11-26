@@ -102,6 +102,7 @@
     font-size: 15px;
     transition: all 0.2s ease;
     background: #fff;
+    margin: 0;
 }
 
 .qot-search-input:focus {
@@ -111,18 +112,18 @@
 }
 
 .qot-search-btn {
-    height: 50px;
     padding: 0 30px;
     background: #0088cc;
     color: #fff;
     border: none;
     border-radius: 8px;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
     cursor: pointer;
     white-space: nowrap;
     transition: all 0.2s ease;
+    margin: 0 !important;
 }
 
 .qot-search-btn:hover {
@@ -147,8 +148,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     background: #0088cc;
     border-radius: 50%;
     color: #fff;
@@ -161,7 +162,7 @@
 }
 
 .qot-phone-number {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 700;
     color: #333;
     text-decoration: none;
@@ -179,8 +180,8 @@
     justify-content: center;
     gap: 10px;
     height: 60px;
-    padding: 0 32px;
-    font-size: 16px;
+    padding: 5px 10px;
+    font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
     background: #003d7a;
@@ -190,6 +191,7 @@
     cursor: pointer;
     transition: all 0.2s ease;
     white-space: nowrap;
+    margin: 0 O !important;
 }
 
 .qot-header-add-to-cart-btn svg {
