@@ -179,7 +179,6 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    height: 60px;
     padding: 5px 10px;
     font-size: 13px;
     font-weight: 700;
@@ -191,7 +190,7 @@
     cursor: pointer;
     transition: all 0.2s ease;
     white-space: nowrap;
-    margin: 0 O !important;
+    margin: O !important;
 }
 
 .qot-header-add-to-cart-btn svg {
